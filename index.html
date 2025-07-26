@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndiMorph - AI-Powered Shape-Shifting Vehicle Platform</title>
+    <meta name="description" content="IndiMorph is a next-generation, AI-powered, shape-shifting multi-modal vehicle platform designed for smart transportation, defense, and disaster response.">
+    <meta property="og:title" content="IndiMorph">
+    <meta property="og:description" content="AI-Powered Shape-Shifting Vehicle Platform">
+    <meta property="og:image" content="ChatGPT Image Jul 24, 2025, 07_53_01 PM.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IndiMorph">
+    <meta name="twitter:description" content="AI-Powered Shape-Shifting Vehicle Platform">
+    <meta name="twitter:image" content="ChatGPT Image Jul 24, 2025, 07_53_01 PM.png">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #ff6b35;
+            --accent-color: #7c3aed;
+            --light-bg: #ffffff;
+            --light-bg-contrast: #f7f7f7;
+            --light-card-bg: #f9f9f9;
+            --light-text-primary: #222222;
+            --light-text-secondary: #555555;
+            --light-border-color: #e0e0e0;
+            --dark-bg: #0a0a0a;
+            --dark-bg-contrast: #181818;
+            --dark-card-bg: #111111;
+            --dark-text-primary: #ffffff;
+            --dark-text-secondary: #a0a0a0;
+            --dark-border-color: #333333;
+            --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+            --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        body[data-theme="light"] {
+            background: var(--light-bg);
+            color: var(--light-text-primary);
+        }
+        body[data-theme="dark"] {
+            background: var(--dark-bg);
+            color: var(--dark-text-primary);
+        }
+        
+        /* Mobile-first responsive design */
+        .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        /* Navigation - Mobile Optimized */
+        .navbar {
+            background: rgba(255,255,255,0.95) !important;
+            border-bottom: 1px solid var(--light-border-color);
+            color: var(--light-text-primary);
+            padding: 0.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+        body[data-theme="dark"] .navbar {
+            background: rgba(10,10,10,0.95) !important;
+            border-bottom: 1px solid var(--dark-border-color);
+            color: var(--dark-text-primary);
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--primary-color) !important;
+        }
+        
+        .navbar-brand img {
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.25rem 0.5rem;
+            font-size: 1.25rem;
+            background: transparent;
+            color: inherit;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        body[data-theme="dark"] .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        .nav-link {
+            color: var(--light-text-secondary) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
+        }
+        body[data-theme="dark"] .nav-link {
+            color: var(--dark-text-secondary) !important;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            background: rgba(0, 212, 255, 0.1);
+        }
+        
+        /* Theme toggle in navbar */
+        .navbar .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--light-border-color);
+            color: var(--light-text-secondary);
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 0.5rem;
+        }
+        
+        body[data-theme="dark"] .navbar .theme-toggle {
+            border: 1px solid var(--dark-border-color);
+            color: var(--dark-text-secondary);
+        }
+        
+        .navbar .theme-toggle:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        /* Mobile navbar improvements */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: rgba(255, 255, 255, 0.98);
+                border-radius: 12px;
+                margin-top: 1rem;
+                padding: 1rem;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            body[data-theme="dark"] .navbar-collapse {
+                background: rgba(10, 10, 10, 0.98);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            .navbar-nav {
+                gap: 0.5rem;
+            }
+            
+            .navbar .theme-toggle {
+                margin: 0.5rem 0 0 0;
+                align-self: flex-start;
+            }
+        }
+        
+        /* Hero Section - Mobile Optimized */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--light-bg-contrast) 0%, var(--light-bg) 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+        body[data-theme="dark"] .hero-section {
+            background: linear-gradient(135deg, var(--dark-bg-contrast) 0%, var(--dark-bg) 100%);
+        }
+        @media (max-width: 991px) {
+            .hero-section {
+                margin-top: 70px; /* Add gap below navbar for mobile/tablet */
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                padding: 0;
+            }
+            .container {
+                padding-left: 0;
+                padding-right: 0;
+                width: 100vw;
+                max-width: 100vw;
+            }
+            .hero-content {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100vw;
+                max-width: 100vw;
+                box-sizing: border-box;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .hero-title {
+                text-align: center;
+                width: 100%;
+                word-break: break-word;
+            }
+            .tricolor-text {
+                font-size: 1.5rem;
+                white-space: nowrap;
+                width: 100%;
+            }
+            .hero-subtitle {
+                text-align: center;
+                width: 100%;
+                word-break: break-word;
+            }
+            .hero-buttons {
+                justify-content: center;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .hero-section img {
+                max-width: 95vw;
+                width: 100%;
+                height: auto;
+                border-radius: 16px;
+            }
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient-tricolor);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+        
+        .gradient-text {
+            background: var(--gradient-indian);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: indianGradient 3s ease-in-out infinite;
+        }
+        
+        @keyframes indianGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--light-text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        body[data-theme="dark"] .hero-subtitle {
+            color: var(--dark-text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Hero Buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+        
+        .btn-primary-custom {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-height: 44px;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            color: white;
+        }
+        
+        .btn-secondary-custom {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-height: 44px;
+        }
+        
+        .btn-secondary-custom:hover {
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+        
+        body[data-theme="dark"] .btn-secondary-custom {
+            color: var(--primary-color);
+        }
+        
+        body[data-theme="dark"] .btn-secondary-custom:hover {
+            color: var(--dark-bg);
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 0;
+            }
+        }
+        
+        /* Cards - Mobile Optimized */
+        .feature-card, .model-card, .workflow-step, .sponsor-item {
+            background: var(--light-card-bg);
+            border: 1px solid var(--light-border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+        }
+        body[data-theme="dark"] .feature-card,
+        body[data-theme="dark"] .model-card,
+        body[data-theme="dark"] .workflow-step,
+        body[data-theme="dark"] .sponsor-item {
+            background: var(--dark-card-bg);
+            border: 1px solid var(--dark-border-color);
+        }
+        
+        @media (max-width: 768px) {
+            .feature-card, .model-card, .workflow-step, .sponsor-item {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        .feature-card:hover,
+        .model-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+        }
+        
+        .feature-icon, .model-icon {
+            background: var(--gradient-primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-icon, .model-icon {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 0.75rem;
+            }
+        }
+        
+        .feature-icon i, .model-icon i {
+            color: #fff;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-icon i, .model-icon i {
+                font-size: 1.25rem;
+            }
+        }
+        
+        .feature-title, .model-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: inherit;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-title, .model-card h4 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+        
+        .feature-description, .model-card p {
+            color: inherit;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .feature-description, .model-card p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Section Titles - Mobile Optimized */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: inherit;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: inherit;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        /* Grid Layouts - Mobile Optimized */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 767px) {
+            .overview-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+        }
+        
+        /* Workflow Steps - Mobile Optimized */
+        .workflow-step {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: var(--light-card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--light-border-color);
+            transition: all 0.3s ease;
+        }
+        
+        body[data-theme="dark"] .workflow-step {
+            background: var(--dark-card-bg);
+            border: 1px solid var(--dark-border-color);
+        }
+        
+        @media (max-width: 768px) {
+            .workflow-step {
+                padding: 1rem;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        .workflow-step-number {
+            background: var(--gradient-primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .workflow-step-number {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+                margin-bottom: 0.75rem;
+            }
+        }
+        
+        /* Footer - Mobile Optimized */
+        .footer {
+            background: var(--light-bg-contrast);
+            border-top: 1px solid var(--light-border-color);
+            padding: 3rem 0 1rem;
+            color: var(--light-text-secondary);
+        }
+        body[data-theme="dark"] .footer {
+            background: var(--dark-bg-contrast);
+            border-top: 1px solid var(--dark-border-color);
+            color: var(--dark-text-secondary);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+        
+        .footer-section {
+            margin-bottom: 0;
+        }
+        
+        .footer-section h5 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        
+        .footer-section p {
+            color: inherit;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+        
+        body[data-theme="dark"] .footer-section p, 
+        body[data-theme="dark"] .footer-section a {
+            color: var(--dark-text-secondary);
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-start;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .social-links {
+                justify-content: center;
+                gap: 0.75rem;
+            }
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--light-card-bg);
+            border: 1px solid var(--light-border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text-secondary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        body[data-theme="dark"] .social-link {
+            background: var(--dark-card-bg);
+            border: 1px solid var(--dark-border-color);
+            color: var(--dark-text-secondary);
+        }
+        
+        .social-link:hover {
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid var(--light-border-color);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--light-text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        body[data-theme="dark"] .footer-bottom {
+            border-top: 1px solid var(--dark-border-color);
+            color: var(--dark-text-secondary);
+        }
+        
+        /* Theme Toggle - Mobile Optimized */
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--light-border-color);
+            color: var(--light-text-secondary);
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body[data-theme="dark"] .theme-toggle {
+            border: 1px solid var(--dark-border-color);
+            color: var(--dark-text-secondary);
+        }
+        
+        .theme-toggle:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        /* Touch-friendly buttons and links */
+        .btn, .nav-link, .social-link, .theme-toggle {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        /* Improved spacing for mobile */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .py-5 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+            
+            .py-4 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg-contrast);
+        }
+        body[data-theme="dark"] ::-webkit-scrollbar-track {
+            background: var(--dark-bg-contrast);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* System Overview */
+        .system-overview {
+            background: var(--light-bg-contrast);
+        }
+        body[data-theme="dark"] .system-overview {
+            background: var(--dark-bg-contrast);
+        }
+        
+        /* AI Models Section */
+        .ai-models {
+            background: var(--light-bg);
+        }
+        body[data-theme="dark"] .ai-models {
+            background: var(--dark-bg);
+        }
+        
+        /* Hardware Section */
+        .hardware-section {
+            background: var(--light-bg-contrast);
+        }
+        body[data-theme="dark"] .hardware-section {
+            background: var(--dark-bg-contrast);
+        }
+        
+        /* Digital Twin Section */
+        .digital-twin {
+            background: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        body[data-theme="dark"] .digital-twin {
+            background: var(--dark-bg);
+        }
+        
+        .digital-twin::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 212, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Workflow Section */
+        .workflow-section {
+            background: var(--light-bg-contrast);
+        }
+        body[data-theme="dark"] .workflow-section {
+            background: var(--dark-bg-contrast);
+        }
+        
+        /* Team Section */
+        .team-section {
+            background: var(--light-bg-contrast);
+            padding: 4rem 0;
+        }
+        body[data-theme="dark"] .team-section {
+            background: var(--dark-bg-contrast);
+        }
+        
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+        
+        @media (max-width: 767px) {
+            .team-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+        }
+        
+        .team-member {
+            background: var(--light-card-bg);
+            border: 1px solid var(--light-border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            width: 280px;
+            flex-shrink: 0;
+        }
+        
+        body[data-theme="dark"] .team-member {
+            background: var(--dark-card-bg);
+            border: 1px solid var(--dark-border-color);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+        }
+        
+        .member-photo {
+            margin-bottom: 1.5rem;
+        }
+        
+        .circular-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover .circular-photo {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.3);
+        }
+        
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: inherit;
+        }
+        
+        .member-role {
+            font-size: 1rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .member-bio {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: inherit;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        
+        .team-member .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        
+        .team-member .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--light-card-bg);
+            border: 1px solid var(--light-border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text-secondary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        body[data-theme="dark"] .team-member .social-link {
+            background: var(--dark-card-bg);
+            border: 1px solid var(--dark-border-color);
+            color: var(--dark-text-secondary);
+        }
+        
+        .team-member .social-link:hover {
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Sponsors Section */
+        .sponsors-section {
+            background: var(--light-bg);
+            padding: 4rem 0;
+            /* Force visibility */
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: relative;
+            z-index: 10;
+        }
+        body[data-theme="dark"] .sponsors-section {
+            background: var(--dark-bg);
+        }
+        
+        @media (max-width: 768px) {
+            .sponsors-section {
+                padding: 2rem 0;
+            }
+        }
+        
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 767px) {
+            .sponsor-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+        }
+        
+        .sponsor-item {
+            background: var(--light-card-bg);
+            border: 1px solid var(--light-border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            /* Force visibility */
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        body[data-theme="dark"] .sponsor-item {
+            background: var(--dark-card-bg);
+            border: 1px solid var(--dark-border-color);
+        }
+        
+        .sponsor-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+        }
+        
+        /* Hero section background effects */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .feature-card::before,
+        .model-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(0, 212, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .feature-card:hover::before,
+        .model-card:hover::before {
+            opacity: 1;
+        }
+
+        .tricolor-text {
+            background: linear-gradient(270deg, #FF9933, #87CEFA, #138808, #FF9933);
+            background-size: 600% 600%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 900;
+            letter-spacing: 2.5px;
+            font-size: 4rem;
+            text-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            position: relative;
+            animation: tricolorMove 6s ease-in-out infinite;
+        }
+        @keyframes tricolorMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .slogan-text {
+            display: block;
+            margin-top: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-align: center;
+            line-height: 1.4;
+            /* Apply tricolor gradient and animation */
+            background: linear-gradient(270deg, #FF9933, #87CEFA, #138808, #FF9933);
+            background-size: 600% 600%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 900;
+            text-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            position: relative;
+            animation: tricolorMove 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="ChatGPT Image Jul 24, 2025, 07_53_01 PM.png" alt="IndiMorph Logo">
+                IndiMorph
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#overview">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ai-models">AI Models</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hardware">Hardware</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#digital-twin">Digital Twin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#workflow">Workflow</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="theme-toggle" onclick="toggleTheme()">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">
+                        <span class="gradient-text tricolor-text">IndiMorph</span><br>
+                        <span class="slogan-text">From Deserts to the Himalayas </span><br>
+                    </h1>
+                    <p class="hero-subtitle">
+                       Bharat’s Own Next Generation AI Powered Shape Shifting Mobility An indigenous multi modal platform forged for the land of extremes from the blazing sands of the Thar to the icy heights of the Himalayas. Powered by cutting edge AI and edge intelligence, it morphs in real time to serve the nation in transport, defense, and disaster relief.
+
+
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#overview" class="btn-primary-custom">
+                            <i class="fas fa-rocket"></i>
+                            Explore Platform
+                        </a>
+                        <a href="#workflow" class="btn-secondary-custom">
+                            <i class="fas fa-play"></i>
+                            View Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <img src="ChatGPT Image Jul 24, 2025, 07_53_01 PM.png" alt="IndiMorph Platform" class="img-fluid" style="max-width: 400px; border-radius: 20px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Overview Section -->
+    <section id="overview" class="section system-overview">
+        <div class="container">
+            <h2 class="section-title">
+                System Overview
+            </h2>
+            <p class="section-subtitle">
+                IndiMorph integrates state-of-the-art deep learning models, real-time control logic, digital twin visualization, and cloud-native DevOps practices for rapid innovation in smart mobility.
+            </p>
+            
+            <div class="overview-grid">
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">AI Models</h3>
+                    <p class="feature-description">
+                        Terrain classification, 3D CAD generation, and CFD optimization using EfficientNetV2, MobileNetV2, and reinforcement learning for adaptive morphing decisions.
+                    </p>
+                </div>
+                
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="feature-title">Edge Controller</h3>
+                    <p class="feature-description">
+                        Lightweight inference pipeline on Jetson Nano/Raspberry Pi with real-time telemetry logging, PID control, and LSTM-based health monitoring.
+                    </p>
+                </div>
+                
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="feature-title">Hardware Control</h3>
+                    <p class="feature-description">
+                        Arduino firmware for Nitinol wire and pneumatic system control with Python serial bridge for robust, thread-safe communication.
+                    </p>
+                </div>
+                
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="feature-title">Digital Twin</h3>
+                    <p class="feature-description">
+                        Unity-based real-time simulation synchronized with physical and AI states via MQTT for live visualization and operator control.
+                    </p>
+                </div>
+                
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="feature-title">Cloud & DevOps</h3>
+                    <p class="feature-description">
+                        Prometheus monitoring, Grafana dashboards, JWT authentication, and Terraform deployment automation for scalable cloud infrastructure.
+                    </p>
+                </div>
+                
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="feature-title">Datasets & Simulations</h3>
+                    <p class="feature-description">
+                        Structured data logging, OpenFOAM CFD simulations, Unity batch runners, and cloud storage integration for research reproducibility.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Models Section -->
+    <section id="ai-models" class="section ai-models">
+        <div class="container">
+            <h2 class="section-title">
+                AI Models
+            </h2>
+            <p class="section-subtitle">
+                Advanced machine learning modules for terrain perception, 3D shape generation, and aerodynamic optimization enabling intelligent morphing decisions.
+            </p>
+            
+            <div class="overview-grid">
+                <div class="model-card animate-fade-in-up">
+                    <div class="model-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h4>Terrain Classifier</h4>
+                    <p>EfficientNetV2 and MobileNetV2 models for real-time terrain classification using camera and IMU data fusion.</p>
+                </div>
+                
+                <div class="model-card animate-fade-in-up">
+                    <div class="model-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h4>CAD Generator</h4>
+                    <p>VQGAN3D/UNet/Transformer3D architectures for 3D vehicle shape synthesis and design exploration.</p>
+                </div>
+                
+                <div class="model-card animate-fade-in-up">
+                    <div class="model-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h4>CFD Optimizer</h4>
+                    <p>Reinforcement learning with OpenFOAM integration for aerodynamic optimization and morphing pattern discovery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hardware Section -->
+    <section id="hardware" class="section hardware-section">
+        <div class="container">
+            <h2 class="section-title">
+                Hardware Control
+            </h2>
+            <p class="section-subtitle">
+                Robust actuator management and sensor integration for reliable shape-shifting capabilities across diverse operational environments.
+            </p>
+            
+            <div class="overview-grid">
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="feature-title">Arduino Firmware</h3>
+                    <p class="feature-description">
+                        Real-time servo control, serial command parsing, and safety validation for Nitinol wire and pneumatic system actuation.
+                    </p>
+                </div>
+                
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="feature-title">Python Bridge</h3>
+                    <p class="feature-description">
+                        Thread-safe communication layer with configurable serial ports and extensible command API for hardware integration.
+                    </p>
+                </div>
+                
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Morph Logic</h3>
+                    <p class="feature-description">
+                        Decision-making engine translating AI outputs into actuator commands with context-aware pattern mapping.
+                    </p>
+                </div>
+                
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="feature-title">Health Monitoring</h3>
+                    <p class="feature-description">
+                        LSTM-based anomaly detection for predictive maintenance and fault detection in actuator and sensor systems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Twin Section -->
+    <section id="digital-twin" class="section digital-twin">
+        <div class="container">
+            <h2 class="section-title">
+                Digital Twin
+            </h2>
+            <p class="section-subtitle">
+                Real-time simulation and visualization platform providing live digital twin capabilities for operators and researchers.
+            </p>
+            
+            <div class="overview-grid">
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h3 class="feature-title">MQTT Integration</h3>
+                    <p class="feature-description">
+                        Real-time data streaming from physical and AI systems to Unity visualization with low-latency, high-throughput communication.
+                    </p>
+                </div>
+                
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="feature-title">Unity Visualization</h3>
+                    <p class="feature-description">
+                        Rich, interactive 3D visualization with real-time updates reflecting morphing, terrain changes, and sensor readings.
+                    </p>
+                </div>
+                
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="feature-title">Twin Sync Interface</h3>
+                    <p class="feature-description">
+                        UDP socket bridge and MQTT relay for bidirectional communication between backend systems and Unity digital twin.
+                    </p>
+                </div>
+                
+                <div class="feature-card animate-fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Scenario Simulation</h3>
+                    <p class="feature-description">
+                        Batch and scenario-based simulation for research and testing with comprehensive logging and analysis capabilities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="workflow" class="section workflow-section">
+        <div class="container">
+            <h2 class="section-title">
+                Example Workflows
+            </h2>
+            <p class="section-subtitle">
+                End-to-end morphing cycles demonstrating the complete system integration from sensing to actuation and monitoring.
+            </p>
+            
+            <div class="workflow-step animate-fade-in-up">
+                <div class="workflow-step-number">1</div>
+                <div class="step-content">
+                    <h4>System Startup</h4>
+                    <p>Vehicle powers on, initializing all hardware, edge controllers, and backend services with health checks and calibration.</p>
+                </div>
+            </div>
+            
+            <div class="workflow-step animate-fade-in-up">
+                <div class="workflow-step-number">2</div>
+                <div class="step-content">
+                    <h4>Terrain Classification</h4>
+                    <p>Edge controller runs TFLite terrain classifier on live camera and IMU data, outputting current terrain type for morphing decisions.</p>
+                </div>
+            </div>
+            
+            <div class="workflow-step animate-fade-in-up">
+                <div class="workflow-step-number">3</div>
+                <div class="step-content">
+                    <h4>Morph Decision</h4>
+                    <p>Morph logic module receives terrain type and mission mode, computes optimal actuator pattern, and sends commands via Python serial bridge.</p>
+                </div>
+            </div>
+            
+            <div class="workflow-step animate-fade-in-up">
+                <div class="workflow-step-number">4</div>
+                <div class="step-content">
+                    <h4>Actuation</h4>
+                    <p>Arduino firmware actuates Nitinol wires and pneumatic systems, morphing the vehicle shape according to computed patterns.</p>
+                </div>
+            </div>
+            
+            <div class="workflow-step animate-fade-in-up">
+                <div class="workflow-step-number">5</div>
+                <div class="step-content">
+                    <h4>Digital Twin Update</h4>
+                    <p>Current state published via MQTT and visualized in Unity, providing live digital twin for operators and researchers.</p>
+                </div>
+            </div>
+            
+            <div class="workflow-step animate-fade-in-up">
+                <div class="workflow-step-number">6</div>
+                <div class="step-content">
+                    <h4>Monitoring & Control</h4>
+                    <p>LSTM health model monitors for anomalies while operators can view and control the system via web dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">
+                Developer Team
+            </h2>
+            <p class="section-subtitle">
+                Meet the brilliant minds behind IndiMorph - a diverse team of researchers, engineers, and innovators driving the future of AI-powered adaptive mobility.
+            </p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="1.jpg" alt="OM SINGH" class="circular-photo">
+                    </div>
+                    <h4 class="member-name">OM SINGH</h4>
+                    <p class="member-role"> AI Researcher and Developer</p>
+                    <p class="member-bio">Specializes in deep learning and computer vision with advanced experience in autonomous systems.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/omsinghindia" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto: osindia10@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://orcid.org/0009-0009-4986-5092" class="social-link" title="ORCID"><i class="fas fa-id-badge"></i></a>
+                        <a href="https://linkedin.com/in/omsinghindia" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="2.jpg" alt="GAURAV PANDEY" class="circular-photo">
+                    </div>
+                    <h4 class="member-name">GAURAV PANDEY</h4>
+                    <p class="member-role">AI Researcher and Developer</p>
+                    <p class="member-bio">Specialist in AI driven perception and control systems with expertise in shape shifting mechanisms.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Gauravpandeyindia" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:sauravpandey2203@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://orcid.org/0009-0005-0972-5950" class="social-link" title="ORCID"><i class="fas fa-id-badge"></i></a>
+                        <a href="https://www.linkedin.com/in/gaurav-pandey-7026852a3" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="pic.jpg" alt="ANUSHKA DWIVEDI" class="circular-photo">
+                    </div>
+                    <h4 class="member-name">ANUSHKA DWIVEDI</h4>
+                    <p class="member-role">Full Stack Developer & Designer</p>
+                    <p class="member-bio">Full stack developer specializing in cloud infrastructure and real time data processing systems.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Anushkadwivedi0187" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:anushkadwivedi2428@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://orcid.org/0009-0004-5715-4008" class="social-link" title="ORCID"><i class="fas fa-id-badge"></i></a>
+                        <a href="https://www.linkedin.com/in/anushka-dwivedi-6ab937255?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BDAd6St8CReeXnNOfKURg5A%3D%3D" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="pic.jpg" alt="JAHNAVI SHUKLA" class="circular-photo">
+                    </div>
+                    <h4 class="member-name">JAHNAVI SHUKLA</h4>
+                    <p class="member-role">UI/UX Designer </p>
+                    <p class="member-bio">Specializing in intuitive interfaces, User centered design, and seamless experience for smart mobility platforms.</p>
+                    <div class="social-links">
+                        <a href="https://github.com" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:jahnavishukla1010@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://orcid.org" class="social-link" title="ORCID"><i class="fas fa-id-badge"></i></a>
+                        <a href="https://linkedin.com" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="pic.jpg" alt="MANYA SRIVASTAVA" class="circular-photo">
+                    </div>
+                    <h4 class="member-name">MANYA SRIVASTAVA</h4>
+                    <p class="member-role">Full Stack Developer</p>
+                    <p class="member-bio">Full stack developer specializing in cloud infrastructure and real time data processing systems.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Manyasri02" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:manyasrivastava4@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://orcid.org/0009-0004-1865-3090" class="social-link" title="ORCID"><i class="fas fa-id-badge"></i></a>
+                        <a href="https://www.linkedin.com/in/manya-srivastava-6b0948255?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BMLuxbnflQrWKHiriMJnZeA%3D%3D" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="3.jpg" alt="YASH SRIVASTAVA" class="circular-photo">
+                    </div>
+                    <h4 class="member-name">YASH SRIVASTAVA</h4>
+                    <p class="member-role">AI & Embedded Systems</p>
+                    <p class="member-bio">Specializes in real-time control systems and embedded AI, contributing to the integration of deep learning models.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/sanjaygupta" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:sanjay.gupta@indimorph.ai" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://orcid.org/0000-0006-6789-0123" class="social-link" title="ORCID"><i class="fas fa-id-badge"></i></a>
+                        <a href="https://linkedin.com/in/sanjaygupta" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section class="sponsors-section">
+        <div class="container">
+            <h2 class="section-title">
+                Research Partners
+            </h2>
+            <p class="section-subtitle">
+                Collaborating with leading institutions and organizations to advance AI-powered adaptive vehicle technology.
+            </p>
+            
+            <div class="sponsor-grid">
+                <div class="sponsor-item" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <i class="fas fa-university fa-3x text-primary mb-3"></i>
+                    <h5>Academic Research</h5>
+                    <p>University partnerships for cutting-edge AI and robotics research</p>
+                </div>
+                
+                <div class="sponsor-item" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <i class="fas fa-industry fa-3x text-primary mb-3"></i>
+                    <h5>Industry Collaboration</h5>
+                    <p>Technology transfer and commercialization partnerships</p>
+                </div>
+                
+                <div class="sponsor-item" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                    <h5>Defense Applications</h5>
+                    <p>Military and security sector technology development</p>
+                </div>
+                
+                <div class="sponsor-item" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                    <i class="fas fa-heart fa-3x text-primary mb-3"></i>
+                    <h5>Disaster Response</h5>
+                    <p>Emergency and humanitarian aid applications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h5>IndiMorph</h5>
+                    <p>Next-generation AI-powered shape-shifting vehicle platform for smart transportation, defense, and disaster response.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h5>Platform</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#overview">System Overview</a></li>
+                        <li><a href="#ai-models">AI Models</a></li>
+                        <li><a href="#hardware">Hardware Control</a></li>
+                        <li><a href="#digital-twin">Digital Twin</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h5>Research</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#workflow">Example Workflows</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Publications</a></li>
+                        <li><a href="#">Datasets</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h5>Contact</h5>
+                    <p>Get in touch for collaboration opportunities, research partnerships, or technical support.</p>
+                    <a href="mailto:contact@indimorph.ai">contact@indimorph.ai</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 IndiMorph. All rights reserved. | Open-source research platform for AI-powered adaptive vehicles.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const body = document.body;
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            
+            if (window.scrollY > 50) {
+                if (isDark) {
+                    navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                }
+            } else {
+                if (isDark) {
+                    navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
+            }
+        });
+
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('.theme-toggle i');
+            const navbar = document.querySelector('.navbar');
+            
+            if (body.getAttribute('data-theme') === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+                // Update navbar background for dark theme
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+                } else {
+                    navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+                }
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+                // Update navbar background for light theme
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
+            }
+        }
+
+        // Load saved theme on page load
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const body = document.body;
+            const icon = document.querySelector('.theme-toggle i');
+            const navbar = document.querySelector('.navbar');
+            let themeToSet = savedTheme;
+            if (!themeToSet) {
+                themeToSet = 'dark'; // Default to dark theme
+            }
+            body.setAttribute('data-theme', themeToSet);
+            if (themeToSet === 'dark') {
+                icon.className = 'fas fa-sun';
+                // Update navbar background for dark theme
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+                } else {
+                    navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+                }
+            } else {
+                icon.className = 'fas fa-moon';
+                // Update navbar background for light theme
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
+            }
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards
+        document.querySelectorAll('.feature-card, .model-card, .workflow-step, .sponsor-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add loading animation and load saved theme
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+            loadTheme(); // Load saved theme on page load
+        });
+    </script>
+</body>
+</html> 
